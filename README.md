@@ -109,20 +109,6 @@ Task1_Titanic_Survival_Prediction
 
 ```
 
----
-
-## 📸 Visualizations
-
-### Exploratory Data Analysis
-
-![EDA](plots/eda_plots.png)
-
-### Model Evaluation
-
-![Evaluation](plots/model_evaluation.png)
-
----
-
 ## 🚀 Getting Started
 
 ```bash
