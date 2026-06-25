@@ -106,7 +106,7 @@ Task1_Titanic_Survival_Prediction
 │   └── titanic_survival.py
 │
 ├── requirements.txt
-└── README.md
+
 ```
 
 ---
