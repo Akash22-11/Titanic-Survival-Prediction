@@ -93,7 +93,7 @@ G --> H[Prediction]
 ## 📁 Repository Structure
 
 ```bash
-Task1_Titanic_Survival_Prediction
+Titanic_Survival_Prediction
 │
 ├── data/
 │   └── titanic.csv
