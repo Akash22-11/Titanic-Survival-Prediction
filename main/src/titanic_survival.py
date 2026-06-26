@@ -55,17 +55,20 @@ sns.countplot(x='Sex', hue='Survived', data=df,
 axes[0, 1].set_title('Survival by Gender')
 axes[0, 1].legend(['Died', 'Survived'])
 
+
 sns.countplot(x='Pclass', hue='Survived', data=df,
             palette=['#e74c3c', '#2ecc71'], ax=axes[0, 2])
 axes[0, 2].set_title('Survival by Ticket Class')
 axes[0, 2].legend(['Died', 'Survived'])
+
 
 df['Age'].dropna().plot(kind='hist', bins=30, color='#3498db',
                         edgecolor='white', ax=axes[1, 0])
 axes[1, 0].set_title('Age Distribution')
 axes[1, 0].set_xlabel('Age')
 
-df['Fare'].plot(kind='hist', bins=40, color='#9b59b6',
+df[
+'Fare'].plot(kind='hist', bins=40, color='#9b59b6',
                 edgecolor='white', ax=axes[1, 1])
 axes[1, 1].set_title('Fare Distribution')
 axes[1, 1].set_xlabel('Fare')
@@ -86,8 +89,8 @@ plt.close()
 print("    EDA plots saved.\n")
 
 
-print("[3] Feature Engineering")
 
+print("[3] Feature Engineering")
 data = df.copy()
 
 data['Title'] = data['Name'].str.extract(r' ([A-Za-z]+)\.', expand=False)
@@ -100,7 +103,9 @@ print(f"    Titles found: {data['Title'].value_counts().to_dict()}")
 
 data['Age'] = data.groupby('Title')['Age'].transform(
     lambda x: x.fillna(x.median())
+
 )
+
 
 
 data['FamilySize'] = data['SibSp'] + data['Parch'] + 1
@@ -128,7 +133,8 @@ for col in ['Sex', 'Title', 'AgeBand', 'Embarked', 'Deck']:
 
 FEATURES = ['Pclass', 'Sex', 'Age', 'SibSp', 'Parch',
             'Fare', 'Embarked', 'Title', 'FamilySize',
-            'IsAlone', 'FareBand', 'AgeBand', 'Deck']
+             'IsAlone', 'FareBand', 'AgeBand', 'Deck']
+
 
 X = data[FEATURES]
 y = data['Survived']
