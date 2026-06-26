@@ -160,6 +160,7 @@ models = {
 }
 
 
+
 results = {}
 for name, model in models.items():
     model.fit(X_train, y_train)
@@ -188,6 +189,7 @@ print("-" * 45)
 print(classification_report(y_test, best['y_pred'],
                         target_names=['Died', 'Survived']))
 
+
 fig, axes = plt.subplots(1, 3, figsize=(18, 5))
 fig.suptitle(f'Model Evaluation - {best_name}', fontsize=14, fontweight='bold')
 
@@ -199,6 +201,7 @@ axes[0].set_title('Confusion Matrix')
 axes[0].set_xlabel('Predicted')
 axes[0].set_ylabel('Actual')
 
+
 for name, res in results.items():
     fpr, tpr, _ = roc_curve(y_test, res['y_proba'])
     axes[1].plot(fpr, tpr, label=f"{name} (AUC={res['roc']:.3f})")
@@ -208,12 +211,14 @@ axes[1].set_xlabel('False Positive Rate')
 axes[1].set_ylabel('True Positive Rate')
 axes[1].legend(fontsize=8)
 
+
 if hasattr(best['model'], 'feature_importances_'):
     importance_model      = best['model']
     importance_model_name = best_name
 else:
     importance_model      = results['Random Forest']['model']
     importance_model_name = 'Random Forest'
+
 
 importances = pd.Series(importance_model.feature_importances_, index=FEATURES)
 importances.sort_values().plot(kind='barh', color='#3498db',
@@ -234,6 +239,7 @@ sample['Actual']    = y_test.iloc[:10].values
 sample['Predicted'] = best['model'].predict(sample[FEATURES])
 sample['Correct']   = sample['Actual'].values == sample['Predicted']
 print(sample[['Pclass', 'Sex', 'Age', 'Actual', 'Predicted', 'Correct']].to_string())
+
 
 print("\n" + "=" * 55)
 print("  DONE — All plots saved to plots/")
